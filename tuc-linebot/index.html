@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>TUC小助手</title>
+  <script>
+    (function () {
+      try {
+        var mode = localStorage.getItem("tuc-theme") || "system";
+        var dark =
+          mode === "dark" ||
+          (mode === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        document.documentElement.dataset.theme = dark ? "dark" : "light";
+      } catch (e) {}
+    })();
+  </script>
+  <script type="module" crossorigin src="./assets/index-C_xMzjHC.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-DwpyEx54.css">
+</head>
+<body>
+  <header id="topbar">
+    <div class="brand">
+      <div class="title" id="pageTitle">TUC小助手</div>
+      <div class="sub" id="userInfo"></div>
+    </div>
+
+    <button
+      id="menuToggle"
+      class="menu-toggle"
+      type="button"
+      aria-label="開啟選單"
+      aria-expanded="false"
+      aria-controls="appMenu"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <nav id="appMenu" class="app-menu hidden" aria-label="應用程式選單">
+      <div class="menu-section">
+        <div class="menu-label">頁面</div>
+        <div id="pageList" class="page-list"></div>
+      </div>
+
+      <div class="menu-section">
+        <div class="menu-label">主題</div>
+        <div id="themeOptions" class="theme-options">
+          <button type="button" data-theme-mode="system">跟隨系統</button>
+          <button type="button" data-theme-mode="light">淺色</button>
+          <button type="button" data-theme-mode="dark">深色</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main id="app">
+    <div class="loading">載入中…</div>
+  </main>
+
+  <div id="sheet" class="sheet hidden">
+    <div class="sheet-title" id="sheetTitle"></div>
+    <div class="sheet-options" id="sheetOptions"></div>
+    <button class="sheet-cancel" id="sheetCancel">取消</button>
+  </div>
+
+  <div id="overlay" class="overlay hidden"></div>
+  <div id="toast" class="toast hidden"></div>
+
+</body>
+</html>
